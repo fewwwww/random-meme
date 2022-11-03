@@ -30,6 +30,15 @@ fs.readdir(imgFolder, (err, files) => {
       gifIndex++;
     }
   }
+  console.log('All count:', imgIndex + gifIndex);
   console.log('Image count:', imgIndex);
   console.log('Gif count:', gifIndex);
+  console.log(
+    'Image percentage:',
+    Math.floor(imgIndex / (imgIndex + gifIndex) * 100)
+  );
+  console.log(
+    'Gif percentage:',
+    100 - Math.floor(imgIndex / (imgIndex + gifIndex) * 100)
+  );
 });
