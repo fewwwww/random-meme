@@ -2,6 +2,7 @@
 // abc.JPG => ${index_in_folder}.JPG
 const imgFolder = './imgs/';
 const fs = require('fs');
+const MAX_FILE_NUMBER_LENGTH=8
 
 // check if file is with image extension
 function isImgExt(file) {
@@ -17,16 +18,24 @@ function isGifExt(file) {
   return gifTypes.includes(ext);
 }
 
+function pad(num,len) {
+  numstr=num.toString();
+  while (numstr.length<len){
+    numstr='0'+numstr;
+  }
+  return numstr;
+}
+
 fs.readdir(imgFolder, (err, files) => {
   let imgIndex = 0;
   let gifIndex = 0;
   for (let i = 0; i < files.length; i++) {
     if (isImgExt(files[i])) {
-      fs.renameSync(imgFolder + files[i], imgFolder + imgIndex + '.JPG');
+      fs.renameSync(imgFolder + files[i], imgFolder + pad(imgIndex,MAX_FILE_NUMBER_LENGTH) + '.JPG');
       imgIndex++;
     }
     if (isGifExt(files[i])) {
-      fs.renameSync(imgFolder + files[i], imgFolder + gifIndex + '.GIF');
+      fs.renameSync(imgFolder + files[i], imgFolder + pad(imgIndex,MAX_FILE_NUMBER_LENGTH) + '.GIF');
       gifIndex++;
     }
   }
