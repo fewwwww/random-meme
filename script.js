@@ -18,10 +18,6 @@ function pad(num,len) {
 // if (Math.floor(Math.random() * 101) <= imgPercentage) {
 const imgId = pad(Math.floor(Math.random() * imgCount),MAX_FILE_NUMBER_LENGTH);
 imgUrl = `imgs/${imgId}.JPG`;
-// unexpected error happens when using JPG
-if (imgId === 1 || imgId === 0) {
-  imgUrl = `imgs/${imgId}.jpg`;
-}
 // } else {
 // const gifId = Math.floor(Math.random() * gifCount);
 // imgUrl = `imgs/${gifId}.GIF`;
